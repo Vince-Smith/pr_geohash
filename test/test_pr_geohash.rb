@@ -12,7 +12,7 @@ class PrGeoHashTests < Test::Unit::TestCase
       assert_equal GeoHash.decode(hash), latlng
     end
   end
-  
+
   def test_encode
     {
       [ 45.37,      -121.7      ] => 'c216ne',
@@ -24,9 +24,10 @@ class PrGeoHashTests < Test::Unit::TestCase
       assert_equal GeoHash.encode(latlng[0], latlng[1], hash.length), hash
     end
   end
-  
+
   def test_neighbors
     {
+      '850' => ["852", "853", "851", "84c", "84b", "xfz", "xgp", "xgr"],
       'dqcw5' => ["dqcw7", "dqctg", "dqcw4", "dqcwh", "dqcw6", "dqcwk", "dqctf", "dqctu"],
       'xn774c' => ['xn774f','xn774b','xn7751','xn7749','xn774d','xn7754','xn7750','xn7748'],
       'gcpuvpk' => ['gcpuvps','gcpuvph','gcpuvpm','gcpuvp7','gcpuvpe','gcpuvpt','gcpuvpj','gcpuvp5'],
@@ -35,7 +36,7 @@ class PrGeoHashTests < Test::Unit::TestCase
       assert_equal GeoHash.neighbors(geohash).sort, neighbors.sort
     end
   end
-  
+
   def test_adjacent
     {
       ["dqcjq", :top]    => 'dqcjw',
